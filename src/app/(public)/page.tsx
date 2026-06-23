@@ -6,6 +6,8 @@ import AchievementSection from "@/components/home/AchievementSection";
 import AnnouncementSection from "@/components/home/AnnouncementSection";
 import ContactSection from "@/components/home/ContactSection";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "EkskulKu | Sistem Informasi Ekstrakurikuler",
   description: "EkskulKu adalah platform manajemen ekstrakurikuler sekolah yang memudahkan pendaftaran, absensi, jadwal, dan pencatatan prestasi siswa. Hubungi kami untuk informasi lebih lanjut.",

@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { auth } from "@/auth";
-import { Role } from "@prisma/client";
 
 export default auth((req) => {
   const { nextUrl } = req;
@@ -21,16 +20,16 @@ export default auth((req) => {
   }
 
   if (isLoggedIn && user) {
-    if (isProtectedPath("/admin") && user.role !== Role.ADMIN) {
+    if (isProtectedPath("/admin") && user.role !== "ADMIN") {
       return NextResponse.redirect(new URL("/unauthorized", nextUrl));
     }
-    if (isProtectedPath("/pembina") && user.role !== Role.PEMBINA) {
+    if (isProtectedPath("/pembina") && user.role !== "PEMBINA") {
       return NextResponse.redirect(new URL("/unauthorized", nextUrl));
     }
-    if (isProtectedPath("/siswa") && user.role !== Role.SISWA) {
+    if (isProtectedPath("/siswa") && user.role !== "SISWA") {
       return NextResponse.redirect(new URL("/unauthorized", nextUrl));
     }
-    if (isProtectedPath("/orang-tua") && user.role !== Role.ORANG_TUA) {
+    if (isProtectedPath("/orang-tua") && user.role !== "ORANG_TUA") {
       return NextResponse.redirect(new URL("/unauthorized", nextUrl));
     }
   }

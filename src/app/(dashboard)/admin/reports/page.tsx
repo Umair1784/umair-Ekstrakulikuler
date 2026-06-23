@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 import { Role } from "@prisma/client";
 import { ReportFilters } from "@/components/dashboard/admin/reports/ReportFilters";
 import { ReportSummaryCards } from "@/components/dashboard/admin/reports/ReportSummaryCards";
-import { ExportPdfButton } from "@/components/dashboard/admin/reports/ExportPdfButton";
 import { ExportExcelButton } from "@/components/dashboard/admin/reports/ExportExcelButton";
 
 export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ ekskul?: string, startDate?: string, endDate?: string }> }) {
@@ -61,10 +60,10 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
 
       <ReportFilters extracurriculars={extracurriculars} />
 
-      <ReportSummaryCards 
-        totalStudents={totalStudents} 
-        totalAttendance={attendanceRecords.length} 
-        totalEkskul={extracurriculars.length} 
+      <ReportSummaryCards
+        totalStudents={totalStudents}
+        totalAttendance={attendanceRecords.length}
+        totalEkskul={extracurriculars.length}
       />
 
       <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
@@ -77,11 +76,9 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
         ) : (
           <div className="flex flex-col space-y-4">
             <div className="flex flex-col sm:flex-row gap-4">
-              <ExportPdfButton type="attendance" data={attendanceRecords} />
               <ExportExcelButton type="attendance" />
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <ExportPdfButton type="extracurricular" data={extracurriculars} />
               <ExportExcelButton type="extracurricular" />
             </div>
           </div>

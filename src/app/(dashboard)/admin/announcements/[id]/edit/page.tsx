@@ -4,9 +4,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
-export default async function EditAnnouncementPage({ params }: { params: { id: string } }) {
+export default async function EditAnnouncementPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const announcement = await prisma.announcement.findUnique({
-    where: { id: params.id },
+    where: { id },
   });
 
   if (!announcement) {

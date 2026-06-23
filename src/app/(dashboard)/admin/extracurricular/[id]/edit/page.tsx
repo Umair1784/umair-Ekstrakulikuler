@@ -4,10 +4,11 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
-export default async function EditExtracurricularPage({ params }: { params: { id: string } }) {
+export default async function EditExtracurricularPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const [extracurricular, coaches] = await Promise.all([
     prisma.extracurricular.findUnique({
-      where: { id: params.id },
+      where: { id },
     }),
     prisma.coach.findMany({
       orderBy: { fullName: "asc" },
